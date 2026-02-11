@@ -1,0 +1,1100 @@
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+.flexpay-prototype-shell {
+  --flexpay-prototype-banner-height: 36px;
+  min-height: 100vh;
+}
+
+.flexpay-prototype-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--flexpay-prototype-banner-height);
+  z-index: 1400;
+  background: #103f8f;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #0a2b63;
+}
+
+.flexpay-prototype-content {
+  padding-top: var(--flexpay-prototype-banner-height);
+}
+
+.flexpay-prototype-shell .MuiAppBar-positionFixed {
+  top: var(--flexpay-prototype-banner-height) !important;
+}
+
+.flexpay-prototype-shell .MuiDrawer-paper {
+  top: calc(64px + var(--flexpay-prototype-banner-height)) !important;
+  height: calc(100% - 64px - var(--flexpay-prototype-banner-height)) !important;
+}
+
+.flexpay-prototype-shell .MuiDrawer-paper .css-eaykn5 {
+  display: none !important;
+}
+
+.flexpay-prototype-shell #_app-router {
+  margin-top: var(--flexpay-prototype-banner-height);
+}
+
+.flexpay-auth-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(180deg, #f6f8fb 0%, #eef3fa 100%);
+}
+
+.flexpay-auth-card {
+  width: min(460px, 100%);
+  background: #ffffff;
+  border: 1px solid #dfe6ef;
+  border-radius: 12px;
+  padding: 28px;
+  box-sizing: border-box;
+  box-shadow: 0 10px 22px rgba(18, 45, 85, 0.07);
+}
+
+.flexpay-auth-card h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.2;
+  color: #253645;
+}
+
+.flexpay-auth-subtitle {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: #5a6d83;
+}
+
+.flexpay-auth-message {
+  margin: 16px 0 0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+.flexpay-auth-message-error {
+  color: #8c1d1d;
+  background: #fbecec;
+  border: 1px solid #f3c6c6;
+}
+
+.flexpay-auth-message-success {
+  color: #17613a;
+  background: #eaf7f0;
+  border: 1px solid #c0e7d0;
+}
+
+.flexpay-auth-form {
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.flexpay-auth-form label {
+  display: grid;
+  gap: 6px;
+}
+
+.flexpay-auth-form span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #31475b;
+}
+
+.flexpay-auth-form input {
+  height: 42px;
+  border: 1px solid #c6d1df;
+  border-radius: 8px;
+  padding: 0 12px;
+  font-size: 14px;
+  color: #2d3f4f;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.flexpay-auth-form input:focus {
+  border-color: #5a96e9;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(80, 146, 255, 0.2);
+}
+
+.flexpay-auth-form button {
+  height: 42px;
+  border: 0;
+  border-radius: 8px;
+  background: #396ab8;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.flexpay-auth-form button:disabled {
+  background: #a9bddf;
+  cursor: not-allowed;
+}
+
+.flexpay-auth-actions {
+  margin-top: 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.flexpay-auth-link {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #335fa8;
+  font-size: 13px;
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.flexpay-auth-link:hover {
+  text-decoration: underline;
+}
+
+[data-flexpay-interactive='true'] {
+  cursor: pointer;
+}
+
+.flexpay-error-box {
+  margin-top: 12px;
+}
+
+.flexpay-error-box p {
+  margin: 0;
+  color: #d32f2f;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.flexpay-inline-banner {
+  margin: 8px 0 0;
+  color: #2a65c0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.flexpay-invoice-wrapper {
+  margin-top: 8px;
+}
+
+.flexpay-static-label {
+  margin: 0 0 8px 0;
+  position: static !important;
+  transform: none !important;
+}
+
+.flexpay-invoice-wrapper .MuiInputBase-root {
+  padding-right: 14px;
+  position: relative;
+}
+
+.flexpay-invoice-select {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  appearance: none;
+  outline: none;
+  padding-right: 22px;
+}
+
+.flexpay-invoice-select:disabled {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.flexpay-select-caret {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  color: #798899;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.flexpay-label-shrunk {
+  transform: translate(14px, -9px) scale(0.75) !important;
+  background: #fff !important;
+  padding: 0 6px !important;
+  border-radius: 4px;
+}
+
+.flexpay-reference-label-selected {
+  background: #fff !important;
+  padding: 0 6px !important;
+  border-radius: 4px;
+}
+
+.flexpay-locked-field {
+  background-color: #f3f5f8 !important;
+  border-radius: 4px;
+}
+
+.flexpay-locked-field .MuiOutlinedInput-notchedOutline {
+  border-color: #9fa8b3 !important;
+  border-style: dashed !important;
+}
+
+.flexpay-locked-field input {
+  color: #4d5968 !important;
+  font-weight: 500;
+  cursor: not-allowed;
+}
+
+.flexpay-invoice-schedule {
+  margin-top: 14px;
+}
+
+.flexpay-slider-wrap {
+  margin-top: 8px;
+  position: relative;
+  --flexpay-due-position: 50%;
+}
+
+.flexpay-slider-top {
+  position: relative;
+  height: 38px;
+  margin-bottom: 2px;
+}
+
+.flexpay-pay-timing-slider {
+  --flexpay-slider-thumb-color: #1f73e8;
+  width: 100%;
+  margin: 0 0 10px;
+  appearance: none;
+  background: linear-gradient(to right, #1f9d55 0%, #1f9d55 50%, #d14343 100%);
+  height: 6px;
+  border-radius: 999px;
+  outline: none;
+}
+
+.flexpay-pay-timing-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--flexpay-slider-thumb-color);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
+
+.flexpay-pay-timing-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--flexpay-slider-thumb-color);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
+
+.flexpay-slider-scale {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 24px;
+  margin-bottom: 12px;
+  font-size: 12px;
+}
+
+.flexpay-early-detail-label {
+  color: #1f9d55;
+  text-align: left;
+  background: #e8f7ef;
+  border: 1px solid #ccebd9;
+}
+
+.flexpay-on-time-detail-label {
+  color: #1f73e8;
+  position: absolute;
+  left: var(--flexpay-due-position, 50%);
+  top: 8px;
+  transform: translateX(-50%);
+  text-align: center;
+  background: #e8f0ff;
+  border: 1px solid #cddfff;
+}
+
+.flexpay-chip-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: inherit;
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  border-width: 1px;
+  border-style: solid;
+  background-clip: padding-box;
+  min-height: 0;
+  min-width: 0;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  box-sizing: border-box;
+}
+
+.flexpay-chip-btn:focus-visible {
+  outline: 2px solid rgba(31, 115, 232, 0.35);
+  outline-offset: 1px;
+}
+
+.flexpay-late-detail-label {
+  color: #d14343;
+  position: static;
+  text-align: right;
+  background: #fdecec;
+  border: 1px solid #f4cccc;
+}
+
+.flexpay-slider-summary {
+  margin: 0;
+  font-size: 13px;
+  color: #425466;
+  line-height: 1.45;
+}
+
+.flexpay-sidebar-group {
+  display: block;
+}
+
+.flexpay-sidebar-group.flexpay-collapsed .flexpay-sidebar-child {
+  display: none;
+}
+
+.flexpay-sidebar-group.flexpay-expanded .flexpay-sidebar-chevron {
+  transform: rotate(180deg);
+}
+
+.flexpay-sidebar-chevron {
+  transition: transform 0.2s ease;
+}
+
+.flexpay-sidebar-child {
+  padding-left: 44px !important;
+}
+
+.flexpay-invoices-toolbar {
+  margin: 28px 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.flexpay-invoices-title {
+  margin-right: 0;
+  color: #202a36;
+}
+
+.flexpay-primary-btn,
+.flexpay-secondary-btn {
+  text-transform: none !important;
+  min-width: 112px;
+}
+
+.flexpay-primary-btn {
+  height: 44px !important;
+  padding: 0 18px !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  background: #3866b0 !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2px !important;
+  line-height: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.flexpay-primary-btn:hover {
+  background: #2f5ea7 !important;
+}
+
+.flexpay-primary-btn:disabled {
+  background: #c7d1e1 !important;
+  color: #ffffff !important;
+  border: 0 !important;
+  opacity: 1 !important;
+}
+
+.flexpay-secondary-btn {
+  height: 44px !important;
+  border-radius: 8px !important;
+}
+
+.flexpay-add-invoice-trigger {
+  background: #3866b0 !important;
+  color: #ffffff !important;
+  border-radius: 6px !important;
+  min-width: 120px !important;
+  height: 36px !important;
+  border: 0 !important;
+  text-transform: none !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.8px !important;
+  line-height: 1.75 !important;
+  padding: 6px 16px !important;
+}
+
+.flexpay-add-invoice-trigger:hover {
+  background: #2f5ea7 !important;
+}
+
+.flexpay-invoice-form-card,
+.flexpay-table-card {
+  background: #ffffff;
+  border: 1px solid #e2e8ef;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  padding: 20px;
+}
+
+.flexpay-table-card {
+  margin-bottom: 26px;
+}
+
+.flexpay-table-card--invoice {
+  border-radius: 0;
+  box-shadow: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.flexpay-invoice-filters {
+  background: #fff;
+  border: 1px solid #e2e6ea;
+  border-bottom: 0;
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr auto;
+  align-items: end;
+}
+
+.flexpay-filter-field {
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #516979;
+}
+
+.flexpay-filter-field input,
+.flexpay-filter-field select {
+  height: 40px;
+  border: 2px solid #c9ced6;
+  border-radius: 8px;
+  padding: 0 12px;
+  font-size: 13px;
+  color: #354a59;
+  background: #fff;
+}
+
+.flexpay-filter-input-wrap {
+  position: relative;
+}
+
+.flexpay-filter-input-wrap input {
+  width: 100%;
+  padding-right: 32px;
+  box-sizing: border-box;
+}
+
+.flexpay-filter-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.flexpay-filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 2px;
+}
+
+.flexpay-filter-apply {
+  height: 40px;
+  min-width: 78px;
+  border-radius: 6px;
+  border: 2px solid #8fb0e2;
+  background: #fff;
+  color: #3c68b0;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.flexpay-filter-reset {
+  border: 0;
+  background: transparent;
+  color: #3c68b0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.flexpay-table-scroll-wrap {
+  background: #fff;
+  border: 1px solid #e2e6ea;
+  border-top: 0;
+}
+
+.flexpay-card-title {
+  margin: 0 0 16px;
+  font-size: 18px;
+  color: #2f3747;
+}
+
+.flexpay-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 16px;
+}
+
+.flexpay-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: #3a3b39;
+  font-weight: 600;
+}
+
+.flexpay-field input,
+.flexpay-field select,
+.flexpay-term-row input {
+  height: 46px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 0 12px;
+  font-size: 14px;
+  color: #3a3b39;
+  background: #ffffff;
+}
+
+.flexpay-field input:focus,
+.flexpay-field select:focus,
+.flexpay-term-row input:focus {
+  border-color: #74a7f7;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(80, 146, 255, 0.2);
+}
+
+.flexpay-currency-input-wrap {
+  height: 46px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.flexpay-currency-prefix {
+  padding-left: 12px;
+  color: #6b7785;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.flexpay-currency-input-wrap input {
+  border: 0;
+  box-shadow: none;
+  height: 100%;
+  flex: 1;
+  min-width: 0;
+  padding: 0 12px 0 8px;
+  background: transparent;
+}
+
+.flexpay-currency-input-wrap input:focus {
+  border: 0;
+  box-shadow: none;
+  outline: none;
+}
+
+.flexpay-currency-input-wrap:focus-within {
+  border-color: #74a7f7;
+  box-shadow: 0 0 0 2px rgba(80, 146, 255, 0.2);
+}
+
+.flexpay-terms {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.flexpay-ocr-upload {
+  margin-top: 18px;
+  display: grid;
+  gap: 12px;
+  align-items: start;
+}
+
+.flexpay-ocr-upload-main {
+  display: grid;
+  gap: 10px;
+}
+
+.flexpay-ocr-upload--with-preview {
+  grid-template-columns: minmax(240px, 30%) minmax(0, 70%);
+}
+
+.flexpay-ocr-upload-header {
+  display: grid;
+  gap: 4px;
+}
+
+.flexpay-dropzone {
+  border: 1px dashed #b8c4d3;
+  border-radius: 6px;
+  background: #f9fbfd;
+  min-height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.flexpay-dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  min-height: 72px;
+  z-index: 1;
+}
+
+.flexpay-dropzone-idle-text {
+  margin: 0;
+}
+
+.flexpay-dropzone p {
+  margin: 0;
+  font-size: 13px;
+  color: #4f6073;
+}
+
+.flexpay-dropzone-link {
+  color: #3267ca;
+  font-weight: 600;
+}
+
+.flexpay-dropzone .flexpay-file-input {
+  display: none;
+}
+
+.flexpay-dropzone:hover,
+.flexpay-dropzone-dragover {
+  border-color: #74a7f7;
+  background: #f2f7ff;
+}
+
+.flexpay-dropzone-file-name {
+  font-size: 12px;
+  color: #6a7b8f;
+}
+
+.flexpay-dropzone-file-name:empty {
+  display: none;
+}
+
+.flexpay-invoice-preview {
+  display: grid;
+}
+
+.flexpay-invoice-preview[hidden] {
+  display: none;
+}
+
+.flexpay-invoice-preview-frame {
+  border: 1px solid #d6dee8;
+  border-radius: 8px;
+  background: #ffffff;
+  height: clamp(320px, 58vh, 620px);
+  overflow: hidden;
+}
+
+.flexpay-invoice-preview-image,
+.flexpay-invoice-preview-pdf {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.flexpay-invoice-preview-image {
+  object-fit: contain;
+  background: #f9fbfd;
+}
+
+.flexpay-dropzone-loading-content {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  color: #3267ca;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.flexpay-ocr-spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(50, 103, 202, 0.3);
+  border-top-color: #3267ca;
+  animation: flexpay-spin 0.9s linear infinite;
+}
+
+.flexpay-dropzone-loading {
+  pointer-events: none;
+  border-color: #74a7f7;
+  background: #f2f7ff;
+}
+
+.flexpay-dropzone-loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -40%;
+  width: 40%;
+  background: linear-gradient(
+    90deg,
+    rgba(116, 167, 247, 0),
+    rgba(116, 167, 247, 0.18),
+    rgba(116, 167, 247, 0)
+  );
+  animation: flexpay-scan 1.2s ease-in-out infinite;
+}
+
+.flexpay-dropzone-loading .flexpay-dropzone-idle-text {
+  opacity: 0.35;
+}
+
+.flexpay-dropzone-loading .flexpay-dropzone-loading-content {
+  display: inline-flex;
+}
+
+.flexpay-ocr-status {
+  margin: 0;
+  font-size: 12px;
+  color: #516979;
+  min-height: 18px;
+}
+
+.flexpay-ocr-status-error {
+  color: #d32f2f;
+}
+
+.flexpay-ocr-status-loading::after {
+  content: ' ...';
+  animation: flexpay-pulse-dots 1s steps(3, end) infinite;
+}
+
+@keyframes flexpay-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes flexpay-scan {
+  0% {
+    left: -40%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes flexpay-pulse-dots {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+.flexpay-terms-intro {
+  display: grid;
+  gap: 4px;
+}
+
+.flexpay-terms-label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #2f4452;
+}
+
+.flexpay-terms-helper {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #526579;
+}
+
+.flexpay-term-group {
+  border: 1px solid #e4e9ef;
+  border-radius: 4px;
+  padding: 12px;
+  background: #fafbfd;
+}
+
+.flexpay-term-group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.flexpay-term-group-header h6 {
+  margin: 0;
+  font-size: 13px;
+  color: #343a40;
+}
+
+.flexpay-link-btn {
+  background: transparent;
+  border: 0;
+  color: #3267ca;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.flexpay-link-btn:hover {
+  text-decoration: underline;
+}
+
+.flexpay-term-list {
+  display: grid;
+  gap: 10px;
+}
+
+.flexpay-term-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr minmax(190px, 1.2fr) minmax(190px, 1.2fr) auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.flexpay-term-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: #505c69;
+}
+
+.flexpay-term-output {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: #505c69;
+}
+
+.flexpay-term-calculated {
+  margin: 0;
+  height: 46px;
+  border: 1px dashed #ced4da;
+  border-radius: 4px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  color: #2f4452;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.flexpay-form-actions {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.flexpay-invoice-form-card[hidden] {
+  display: none;
+}
+
+.flexpay-invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  color: #3a3b39;
+}
+
+.flexpay-invoice-table th,
+.flexpay-invoice-table td {
+  border-bottom: 1px solid #d9dee4;
+  text-align: left;
+  padding: 16px 12px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.flexpay-invoice-table th {
+  font-weight: 700;
+  font-size: 14px;
+  color: #2f4452;
+}
+
+.flexpay-row-actions {
+  font-size: 18px;
+  color: #6d7781;
+  text-align: center !important;
+  width: 28px;
+}
+
+.flexpay-flexpay-flag {
+  text-align: center !important;
+}
+
+.flexpay-flexpay-badge {
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.flexpay-flexpay-badge.is-active {
+  background: #49a26b;
+  border: 1px solid #3f9460;
+  color: #ffffff;
+}
+
+.flexpay-flexpay-badge.is-inactive {
+  background: #f2f5f8;
+  border: 1px solid #cfd7e2;
+  color: transparent;
+}
+
+.flexpay-table-footer {
+  background: #fff;
+  border: 1px solid #e2e6ea;
+  border-top: 0;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  padding: 0 14px;
+  color: #3b5564;
+  font-size: 13px;
+}
+
+.flexpay-footer-arrows {
+  font-size: 24px;
+  line-height: 1;
+  color: #a0a7af;
+}
+
+.flexpay-invoice-table tr:last-child td {
+  border-bottom: 0;
+}
+
+@media (max-width: 960px) {
+  .flexpay-invoices-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .flexpay-invoices-title {
+    margin-right: 0;
+  }
+
+  .flexpay-add-invoice-trigger {
+    width: 100%;
+    min-width: 0 !important;
+  }
+
+  .flexpay-invoice-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .flexpay-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .flexpay-ocr-upload--with-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .flexpay-invoice-preview-frame {
+    height: clamp(260px, 50vh, 520px);
+  }
+
+  .flexpay-term-row {
+    grid-template-columns: 1fr;
+  }
+
+  .flexpay-form-actions {
+    justify-content: stretch;
+  }
+
+  .flexpay-primary-btn,
+  .flexpay-secondary-btn {
+    width: 100%;
+  }
+
+  .flexpay-table-card {
+    overflow-x: auto;
+  }
+}
