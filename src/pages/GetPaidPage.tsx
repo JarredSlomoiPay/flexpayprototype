@@ -1,7 +1,8 @@
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../auth/AuthContext';
 import { ReferencePage } from '../components/ReferencePage';
-import { ensureGetPaidSidebarItem, wireLocalAnchors } from '../lib/domHelpers';
+import { ensureGetPaidSidebarItem, wireHeaderLogout, wireLocalAnchors } from '../lib/domHelpers';
 import { extractInvoiceFieldsFromFile, toInvoiceFormPrefillValues } from '../lib/invoiceOcr';
 import { referenceAssets } from '../lib/referenceAssets';
 
@@ -127,12 +128,14 @@ function escapeHtml(value: string): string {
 
 export function GetPaidPage() {
   const navigate = useNavigate();
+  const { signOut } = useAuth();
 
   const wireUp = useCallback(
     (root: HTMLElement) => {
       const cleanups: Array<() => void> = [];
       ensureGetPaidSidebarItem(root, true);
       cleanups.push(wireLocalAnchors(root, navigate));
+      cleanups.push(wireHeaderLogout(root, signOut));
 
       const appRouter = root.querySelector<HTMLElement>('#_app-router');
       if (!appRouter) {
@@ -905,7 +908,7 @@ export function GetPaidPage() {
         }
       };
     },
-    [navigate],
+    [navigate, signOut],
   );
 
   return (

@@ -1,10 +1,12 @@
 import { useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../auth/AuthContext';
 import { ReferencePage } from '../components/ReferencePage';
 import {
   ensureGetPaidSidebarItem,
   findCardByText,
   makeInteractiveCard,
+  wireHeaderLogout,
   wireLocalAnchors,
 } from '../lib/domHelpers';
 import { referenceAssets } from '../lib/referenceAssets';
@@ -12,6 +14,7 @@ import { referenceAssets } from '../lib/referenceAssets';
 export function NewPaymentPage() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { signOut } = useAuth();
 
   const wireUp = useCallback(
     (root: HTMLElement) => {
@@ -19,6 +22,7 @@ export function NewPaymentPage() {
 
       ensureGetPaidSidebarItem(root, false);
       cleanups.push(wireLocalAnchors(root, navigate));
+      cleanups.push(wireHeaderLogout(root, signOut));
 
       const supplierCard = findCardByText(root, 'Supplier payment');
       if (supplierCard) {
@@ -46,7 +50,7 @@ export function NewPaymentPage() {
         }
       };
     },
-    [location.state, navigate],
+    [location.state, navigate, signOut],
   );
 
   return (

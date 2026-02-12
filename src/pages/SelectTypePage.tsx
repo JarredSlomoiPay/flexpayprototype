@@ -1,16 +1,19 @@
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../auth/AuthContext';
 import { ReferencePage } from '../components/ReferencePage';
 import {
   ensureGetPaidSidebarItem,
   findCardByText,
   makeInteractiveCard,
+  wireHeaderLogout,
   wireLocalAnchors,
 } from '../lib/domHelpers';
 import { referenceAssets } from '../lib/referenceAssets';
 
 export function SelectTypePage() {
   const navigate = useNavigate();
+  const { signOut } = useAuth();
 
   const wireUp = useCallback(
     (root: HTMLElement) => {
@@ -18,6 +21,7 @@ export function SelectTypePage() {
 
       ensureGetPaidSidebarItem(root, false);
       cleanups.push(wireLocalAnchors(root, navigate));
+      cleanups.push(wireHeaderLogout(root, signOut));
 
       const manualCard = findCardByText(root, 'Enter manually');
       if (manualCard) {
@@ -51,7 +55,7 @@ export function SelectTypePage() {
         }
       };
     },
-    [navigate],
+    [navigate, signOut],
   );
 
   return (

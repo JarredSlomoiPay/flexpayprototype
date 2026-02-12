@@ -1,7 +1,13 @@
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../auth/AuthContext';
 import { ReferencePage } from '../components/ReferencePage';
-import { ensureGetPaidSidebarItem, findButtonByText, wireLocalAnchors } from '../lib/domHelpers';
+import {
+  ensureGetPaidSidebarItem,
+  findButtonByText,
+  wireHeaderLogout,
+  wireLocalAnchors,
+} from '../lib/domHelpers';
 import { referenceAssets } from '../lib/referenceAssets';
 
 interface InvoiceOption {
@@ -393,6 +399,7 @@ function getMinAllowedOffset(dueDate: Date, baseMinOffset: number): number {
 
 export function SupplierSinglePage() {
   const navigate = useNavigate();
+  const { signOut } = useAuth();
 
   const wireUp = useCallback(
     (root: HTMLElement) => {
@@ -400,6 +407,7 @@ export function SupplierSinglePage() {
 
       ensureGetPaidSidebarItem(root, false);
       cleanups.push(wireLocalAnchors(root, navigate));
+      cleanups.push(wireHeaderLogout(root, signOut));
 
       const payeeInput = root.querySelector<HTMLInputElement>('#mui-17');
       const payeeStack =
@@ -834,7 +842,7 @@ export function SupplierSinglePage() {
         }
       };
     },
-    [navigate],
+    [navigate, signOut],
   );
 
   return (

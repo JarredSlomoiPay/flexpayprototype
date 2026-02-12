@@ -80,6 +80,140 @@ export function wireLocalAnchors(root: HTMLElement, navigate: NavigateFunction):
   };
 }
 
+export function wireHeaderLogout(root: HTMLElement, onLogout: () => void): CleanupFn {
+  const profileIcon =
+    root.querySelector<SVGElement>('header svg[data-testid="PersonIcon"]') ??
+    root.querySelector<SVGElement>('svg[data-testid="PersonIcon"]');
+  const profileButton = profileIcon?.closest<HTMLButtonElement>('button') ?? null;
+  if (!profileButton) {
+    return () => {};
+  }
+
+  profileButton.dataset.testid = 'header-profile-button';
+  profileButton.setAttribute('aria-haspopup', 'menu');
+  profileButton.setAttribute('aria-expanded', 'false');
+
+  const menu = document.createElement('div');
+  menu.className = 'flexpay-header-menu';
+  menu.dataset.testid = 'header-profile-menu';
+  menu.setAttribute('role', 'menu');
+  menu.setAttribute('aria-label', 'Account menu');
+  menu.hidden = true;
+
+  const logoutButton = document.createElement('button');
+  logoutButton.type = 'button';
+  logoutButton.className = 'flexpay-header-menu-item';
+  logoutButton.dataset.testid = 'logout-action';
+  logoutButton.setAttribute('role', 'menuitem');
+  logoutButton.textContent = 'Log out';
+  menu.appendChild(logoutButton);
+
+  document.body.appendChild(menu);
+
+  let isOpen = false;
+
+  const closeMenu = () => {
+    if (!isOpen) {
+      return;
+    }
+    isOpen = false;
+    menu.hidden = true;
+    profileButton.setAttribute('aria-expanded', 'false');
+  };
+
+  const positionMenu = () => {
+    const triggerRect = profileButton.getBoundingClientRect();
+    const viewportPadding = 8;
+
+    menu.style.left = `${Math.max(viewportPadding, triggerRect.right - 180)}px`;
+    menu.style.top = `${triggerRect.bottom + viewportPadding}px`;
+    const menuRect = menu.getBoundingClientRect();
+
+    const left = Math.min(
+      window.innerWidth - menuRect.width - viewportPadding,
+      Math.max(viewportPadding, triggerRect.right - menuRect.width),
+    );
+
+    const preferredTop = triggerRect.bottom + viewportPadding;
+    const maxTop = window.innerHeight - menuRect.height - viewportPadding;
+    const top =
+      preferredTop <= maxTop
+        ? preferredTop
+        : Math.max(viewportPadding, triggerRect.top - menuRect.height - viewportPadding);
+
+    menu.style.left = `${left}px`;
+    menu.style.top = `${top}px`;
+  };
+
+  const openMenu = () => {
+    if (isOpen) {
+      return;
+    }
+    isOpen = true;
+    menu.hidden = false;
+    profileButton.setAttribute('aria-expanded', 'true');
+    positionMenu();
+  };
+
+  const toggleMenu = (event: Event) => {
+    event.preventDefault();
+    if (isOpen) {
+      closeMenu();
+      return;
+    }
+    openMenu();
+  };
+
+  const handleOutsideClick = (event: MouseEvent) => {
+    const target = event.target;
+    if (!(target instanceof Node)) {
+      return;
+    }
+    if (menu.contains(target) || profileButton.contains(target)) {
+      return;
+    }
+    closeMenu();
+  };
+
+  const handleWindowChange = () => {
+    if (!isOpen) {
+      return;
+    }
+    positionMenu();
+  };
+
+  const handleEscape = (event: KeyboardEvent) => {
+    if (event.key !== 'Escape') {
+      return;
+    }
+    closeMenu();
+    profileButton.focus();
+  };
+
+  const handleLogout = (event: Event) => {
+    event.preventDefault();
+    closeMenu();
+    onLogout();
+  };
+
+  profileButton.addEventListener('click', toggleMenu);
+  logoutButton.addEventListener('click', handleLogout);
+  document.addEventListener('click', handleOutsideClick);
+  document.addEventListener('keydown', handleEscape);
+  window.addEventListener('resize', handleWindowChange);
+  window.addEventListener('scroll', handleWindowChange, true);
+
+  return () => {
+    profileButton.removeEventListener('click', toggleMenu);
+    logoutButton.removeEventListener('click', handleLogout);
+    document.removeEventListener('click', handleOutsideClick);
+    document.removeEventListener('keydown', handleEscape);
+    window.removeEventListener('resize', handleWindowChange);
+    window.removeEventListener('scroll', handleWindowChange, true);
+    menu.remove();
+  };
+}
+
 function getSidebarLinkLabel(link: HTMLAnchorElement): string {
   const text = link.querySelector('.MuiListItemText-root p')?.textContent ?? link.textContent ?? '';
   return text.replace(/\s+/g, ' ').trim();

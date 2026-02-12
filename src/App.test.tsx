@@ -34,6 +34,20 @@ describe('payment flow', () => {
     await screen.findByTestId('continue-button');
   });
 
+  it('logs out from the header account menu', async () => {
+    const user = userEvent.setup();
+
+    renderApp(['/new-payment']);
+
+    const profileButton = await screen.findByTestId('header-profile-button');
+    await user.click(profileButton);
+
+    const logoutAction = await screen.findByTestId('logout-action');
+    await user.click(logoutAction);
+
+    await screen.findByRole('heading', { name: 'Sign in' });
+  });
+
   it('validates required fields on supplier single before continue', async () => {
     const user = userEvent.setup();
 
